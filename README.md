@@ -1,2 +1,4 @@
-# video-live-streaming
-Video live streaming with jpeg renders in html5 and nodejs
+# video live streaming in html5
+
+Coming soon example sources in ffmpeg + nodejs + html5 + canvas ...
+
