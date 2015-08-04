@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=320, initial-scale=1"/>
+	<title>base64 streaming</title>
+	<style type="text/css">
+
+		body {
+			background: #333;
+			text-align: center;
+			margin: 0 0 0 0;
+		}
+
+		#videoCanvas {
+			width:640px;
+			height: 480px;
+		}
+
+	</style>
+
+</head>
+<body>
+
+    <canvas id="videoCanvas" width="640" height="480">
+        <p>
+            Please use a browser that supports the Canvas Element, like
+            <a href="http://www.google.com/chrome">Chrome</a>,
+            <a href="http://www.mozilla.com/firefox/">Firefox</a>,
+            <a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+        </p>
+    </canvas>
+
+	<script type="text/javascript">
+
+		// Setup the WebSocket connection and start the player
+		var client = new WebSocket( 'ws://127.0.0.1:8084/' );
+		client.onmessage = function onmessage (event) {
+			if(event.data.size === undefined) {
+				var canvas = document.getElementById('videoCanvas');
+				var context = canvas.getContext('2d');
+				var imageObj = new Image();
+				imageObj.onload = function () {
+					context.drawImage(imageObj, 0, 0, 640, 480);
+				};
+				imageObj.src = event.data;
+			}
+		}
+
+	</script>
+</body>
+</html>
