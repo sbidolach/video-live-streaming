@@ -1,7 +1,7 @@
 # Video live streaming in html5
 
-This tutorial describes how display video data in real-time on the canvas object in html5. 
-Date are broadcast by web socket to html5 in two different ways:
+This tutorial describes how to display video data in real-time on the canvas object in html5. 
+Data are broadcast by web socket to html5 in two different ways:
 
 - FFmpeg convert stream data to images which are sent to server. The server merge images data and convert binary to base64, 
 then broadcast full image in string/base64 format by web socket. The javascript refresh images on canvas object. 
